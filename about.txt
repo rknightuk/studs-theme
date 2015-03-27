@@ -1,0 +1,5 @@
+Theme name:    Studs.me
+Description:   Custom theme for Studs.me
+Author name:   Robb Lewis
+Author site:   http://robblewis.me
+License:       http://rmlewisuk.mit-license.org/
