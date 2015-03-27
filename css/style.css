@@ -308,7 +308,11 @@ hr {
 .article__content img {
 	display: block;
 	margin: 0 auto;
-	max-width: 95%;
+	max-width: 70%;
+}
+
+.article__content a:focus {
+	outline: 0;
 }
 
 .article__source {
@@ -365,4 +369,25 @@ hr {
 	margin: 0 auto;
 	padding: 15px 0 20px 0;
 	/*border-top: 2px solid #c24c59;*/
+}
+
+.success-msg {
+	padding: 10px 15px;
+	background: #dff0d8;
+	border: 2px solid #d7e8c7;
+}
+
+.contact label {
+	width: 120px;
+	display: inline-block;
+}
+
+.contact input {
+	padding: 10px;
+	font-size: 15px;
+}
+
+input[type=submit] {
+	cursor: pointer;
+	border: none;
 }

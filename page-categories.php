@@ -10,6 +10,8 @@
 
 			<section class="article__content">
 
+				<?php echo page_content(); ?>
+
 				<h2><?php echo total_articles(); ?> posts in <?php echo total_categories(); ?> categories.</h2>
 
 				<ul>

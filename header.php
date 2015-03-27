@@ -15,6 +15,8 @@
 		<![endif]-->
 		<link rel="shortcut icon" href="img/favicon.ico">
 		<link rel="stylesheet" href="<?php echo theme_url('/css/style.css'); ?>">
+		<link rel="stylesheet" href="<?php echo theme_url('/css/magnific.css'); ?>">
+		
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo rss_url(); ?>">
 		
 	</head>
