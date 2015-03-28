@@ -28,7 +28,7 @@
 			<div class="header-info__wrapper">
 				
 				<div class="header-info__logo">
-					<img src="<?php echo theme_url('img/logo.png'); ?>">
+					<img src="<?php echo theme_url('img/logo.png'); ?>" width="115" height="115">
 				</div>
 
 				<div class="header-info__title-wrapper">
