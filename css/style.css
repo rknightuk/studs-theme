@@ -206,7 +206,8 @@ hr {
          ::-moz-placeholder { text-transform: uppercase; } /* Firefox 18- */
      :-ms-input-placeholder { text-transform: uppercase; }
 
-.search__box:focus {
+.search__box:focus,
+.search__box.active {
 	transition: border-color .5s ease;
 	border-bottom: 3px solid #4486d4;
 	outline: 0;
@@ -236,15 +237,24 @@ hr {
 	margin-bottom: 0;
 }
 
+.article__info--search {
+	text-align: left;
+}
+
 .article__info {
 	text-align: center;
 }
 
-.article__title {
+.article__title,
+.search__title {
 	font-size: 35px;
 	margin-bottom: 0;
 	margin-top: 15px;
 	line-height: 1.5em;
+}
+
+.search__title .article__meta {
+	vertical-align: middle;
 }
 
 .article__title:after {

@@ -1,45 +1,27 @@
 <?php theme_include('header'); ?>
 
-<h1 class="wrap">Results for &ldquo;<?php echo search_term(); ?>&rdquo;</h1>
+<h1>Results for &ldquo;<em><?php echo search_term(); ?></em>&rdquo;</h1>
 
 <?php if(has_search_results()): ?>
 	<?php $i = 0; while(search_results()): $i++; ?>
-	<article class="content__article">
+	<article class="content__search">
 
-     	<header class="article__info">
+     	<header class="article__info--search">
 
-     		<h1 class="article__title"><a href="<?php echo article_url(); ?>"><?php echo page_title(); ?></a></h1>
+     		<h1 class="search__title">
+     			<a href="<?php echo article_url(); ?>"><?php echo page_title(); ?></a>
+     			<span class="article__meta"><?php echo article_date_custom(); ?> 
+     			| <code class="article__category"><a href="<?php echo article_category_url(); ?>"><?php echo article_category(); ?></a></code></span>
+ 			</h1>
 
      		<h2 class="article__meta">
-     			<?php echo article_date_custom(); ?> 
-     			| <code class="article__category"><a href="<?php echo article_category_url(); ?>"><?php echo article_category(); ?></a></code>
+     			
      		</h2>
 
      	</header>
 
-     	<section class="article__content">
+    </article>
 
-     		<?php echo article_markdown(); ?>
-
-     	</section>
-
-     	<?php if(article_custom_field('source')) : ?>
-            <p class="article__source"><a href="<?php echo article_custom_field('source'); ?>">Original source</a></p>
-        <?php endif; ?>
-
-		<?php if(article_custom_field('sets')) : ?>
-			<section class="article__sets">
-
-				<h1 class="article__sets__title">Mentioned sets</h1>
-
-				<ul class="article__sets__list">
-					<?php echo article_custom_field('sets'); ?>
-				</ul>
-
-			</section>
-		<?php endif; ?>
-
-     	<hr>
 	<?php endwhile; ?>
 
 	<?php if(has_pagination()): ?>
@@ -52,7 +34,9 @@
 	<?php endif; ?>
 
 <?php else: ?>
-	<p class="wrap">Unfortunately, there's no results for &ldquo;<?php echo search_term(); ?>&rdquo;. Did you spell everything correctly?</p>
+	<p>Unfortunately, there's no results for &ldquo;<em><?php echo search_term(); ?></em>&rdquo;.</p>
+	<P>The <a href="/browse">browse page</a> might have what you're looking for.</p>
+	<p>Alternatively, go <a href="/">back to the home page</a> to see all posts.</p>
 <?php endif; ?>
 
 <?php theme_include('footer'); ?>

@@ -68,7 +68,7 @@
 
 				<li class="site-nav__item">
 					<form class="search__form" action="<?php echo search_url(); ?>" method="post">
-						<input type="text" autocomplete="off" class="search__box" name="term" placeholder="Search" value="<?php echo search_term(); ?>">
+						<input type="text" autocomplete="off" class="search__box <?php if(search_term()) { echo 'active'; } ?>" name="term" placeholder="Search" value="<?php echo search_term(); ?>">
 					</form>
 				</li>
 			</ul>
