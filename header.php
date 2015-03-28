@@ -26,14 +26,18 @@
 		<header class="header-info"> <!-- full width of site -->
 
 			<div class="header-info__wrapper">
-				
-				<div class="header-info__logo">
-					<img src="<?php echo theme_url('img/logo.png'); ?>" width="115" height="115">
-				</div>
 
-				<div class="header-info__title-wrapper">
-					<h1 class="header-info__title"><?php echo site_name(); ?></h1>
-					<h2 class="header-info__tagline"><?php echo site_description(); ?></h2>
+				<div class="header-info__centerer">
+				
+					<div class="header-info__logo">
+						<img src="<?php echo theme_url('img/logo.png'); ?>" width="115" height="115">
+					</div>
+
+					<div class="header-info__title-wrapper">
+						<h1 class="header-info__title"><?php echo site_name(); ?></h1>
+						<h2 class="header-info__tagline"><?php echo site_description(); ?></h2>
+					</div>
+
 				</div>
 
 			</div>
