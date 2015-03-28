@@ -275,8 +275,7 @@ hr {
 }
 
 .article__category a,
-.article__tag a,
-.article__set__tag a {
+.article__tag a {
 	text-transform: uppercase;
 	padding: 0 3px;
 	display: inline-block;
@@ -287,17 +286,12 @@ hr {
 }
 
 .article__category--large a, 
-.article__tag--large a,
-.article__set--large a {
+.article__tag--large a {
 	padding: 0 15px;
 }
 
 .article__tag a {
 	background: #c24c59;
-}
-
-.article__set__tag a {
-	background: #DD9524;
 }
 
 .article__content {}
