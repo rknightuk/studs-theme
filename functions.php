@@ -189,7 +189,20 @@ function has_tagged_posts() {
 	}
 
 	Registry::set('total_tagged_posts', $count);
-  } else {
+  }
+  elseif(isset($_GET) && array_key_exists('set',$_GET) && $set = $_GET['set']) {
+  	if($setted_posts = get_posts_with_set($set)) {
+  	  $count = Post::
+  	  where_in('id', $setted_posts)
+  	  ->where('status', '=', 'published')
+  	  ->count();
+  	} else {
+  	  $count = 0;
+  	}
+
+  	Registry::set('total_tagged_posts', $count);
+  }
+  else {
 	Registry::set('total_tagged_posts', 0);
 	return has_posts();
   }
@@ -207,8 +220,8 @@ function tagged_posts() {
   if(isset($_GET) && array_key_exists('tag',$_GET) && $tag = $_GET['tag']) {
 	if(! $posts = Registry::get('tagged_posts')) {
 	  $tagged_posts = get_posts_with_tag($tag);
-	  $posts = Post::
-	  where_in('id', $tagged_posts)
+
+	  $posts = Post::where_in('id', $tagged_posts)
 	  ->where('status', '=', 'published')
 	  ->sort('created', 'desc')
 	  ->get();
@@ -234,8 +247,7 @@ function tagged_posts() {
   {
   	if(! $posts = Registry::get('setted_posts')) {
 	  $setted_posts = get_posts_with_set($set);
-	  $posts = Post::
-	  where_in('id', $setted_posts)
+	  $posts = Post::where_in('id', $setted_posts)
 	  ->where('status', '=', 'published')
 	  ->sort('created', 'desc')
 	  ->get();

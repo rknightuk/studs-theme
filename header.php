@@ -76,3 +76,8 @@
 		</nav>
 
 		<section class="content">
+
+		<?php
+			if (array_key_exists('tag', $_GET) && $tag = $_GET['tag']) echo '<p class="success-msg">Articles tagged with <em>"' . $tag . '"</em></p>';
+			elseif (array_key_exists('set', $_GET) && $set = $_GET['set']) echo '<p class="success-msg">Articles metioning set number <em>"' . $set . '"</em></p>';
+		?>

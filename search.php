@@ -1,6 +1,6 @@
 <?php theme_include('header'); ?>
 
-<h1>Results for &ldquo;<em><?php echo search_term(); ?></em>&rdquo;</h1>
+<p class="success-msg">Results for &ldquo;<em><?php echo search_term(); ?></em>&rdquo;</p>
 
 <?php if(has_search_results()): ?>
 	<?php $i = 0; while(search_results()): $i++; ?>
