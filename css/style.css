@@ -169,12 +169,14 @@ hr {
 	color: #595758;
     transition: background-color 500ms linear;
     margin-top: 3px;
+    border-bottom: 3px solid #ecf0f1;
+    transition: border-color .5s ease;
 }
 
 .site-nav__item a:hover,
 .site-nav__item a.active {
 	border-bottom: 3px solid #4486d4;
-	color: #595758;
+	transition: border-color .5s ease;
 }
 
 .site-nav__item .search__form {
@@ -196,6 +198,7 @@ hr {
 	border-bottom: 3px solid #ecf0f1;
 	width: 100px;
 	text-align: right;
+	transition: border-color .5s ease;
 }
 
 ::-webkit-input-placeholder { text-transform: uppercase; }
@@ -204,6 +207,7 @@ hr {
      :-ms-input-placeholder { text-transform: uppercase; }
 
 .search__box:focus {
+	transition: border-color .5s ease;
 	border-bottom: 3px solid #4486d4;
 	outline: 0;
 }
