@@ -68,8 +68,9 @@ hr {
 
 .header-info {
 	width: 100%;
-	background: #595758;
 	border-bottom: 5px solid #c24c59;
+	background: #595758;
+	background: url('/themes/studs/img/bg.png') repeat;
 }
 
 .header-info__wrapper {
