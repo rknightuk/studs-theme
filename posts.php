@@ -52,6 +52,11 @@
             </p>
         <?php endif; ?>
     </div>
+
+<?php else : ?>
+
+    <p>No posts found</p>
+
 <?php endif; ?>
 
 
