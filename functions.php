@@ -57,7 +57,7 @@ function article_next_link() {
 }
 
 /**
- * TAGS
+ * Tag functions from https://github.com/ntdb/anchor-tags
  */
 
 /**
