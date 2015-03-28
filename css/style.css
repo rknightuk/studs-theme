@@ -234,16 +234,6 @@ hr {
 	text-align: center;
 }
 
-.article__info:after {
-	content: '';
-	width: 75px;
-	height: 3px;
-	background-color: #595758;
-	display: block;
-	margin: 0 auto;
-	margin-top: 15px;
-}
-
 .article__title {
 	font-size: 35px;
 	margin-bottom: 0;
@@ -251,10 +241,20 @@ hr {
 	line-height: 1.5em;
 }
 
+.article__title:after {
+	content: '';
+	width: 75px;
+	height: 3px;
+	background-color: #595758;
+	display: block;
+	margin: 0 auto;
+	margin-top: 5px;
+}
+
 .article__meta {
 	font-size: 12px;
 	font-weight: normal;
-	margin-top: 20px;
+	margin-top: 15px;
 	line-height: 1.5em;
 }
 
