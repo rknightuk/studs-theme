@@ -13,7 +13,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="<?php echo theme_url('/js/magnific.min.js'); ?>"></script>
 
-		<script src="instantclick.min.js" data-no-instant></script>
+		<script src="<?php echo theme_url('/js/instantclick.min.js'); ?>" data-no-instant></script>
 		<script data-no-instant>InstantClick.init();</script>
 
 		<script type="text/javascript">
@@ -23,6 +23,27 @@
 					type: 'image',
 					gallery: { enabled: true }
 				});
+			});
+		</script>
+
+		<script>
+			$('input[name=filter-sets]').keyup(function(e){
+				if ($('.no-results').is(':visible')) {
+					$('.no-results').hide();
+				}
+				
+				var term = $(e.currentTarget).val().toLowerCase();
+
+				var $sets = $('#browse-sets li');
+
+				$sets.show().filter(function() {
+					var text = $(this).find('a').text().replace(/\s+/g, ' ').toLowerCase();
+					return !~text.indexOf(term);
+				}).hide();
+
+				if ( ! $('#browse-sets li').is(':visible')) {
+					$('.no-results').text('No sets found with "' + term + '"').show();
+				}
 			});
 		</script>
 

@@ -29,12 +29,28 @@
 				<p>
 					<?php foreach(get_post_tags() as $id => $tag): ?>
 				    	<code class="article__tag article__tag--large">
-				    		<a href="<?php echo '/posts/?tag='.strtolower($tag); ?>">
+				    		<a href="<?php echo '/?tag='.strtolower($tag); ?>">
 				    			<?php echo strtoupper($tag); ?>
 			    			</a>
 			    		</code>
 					<?php endforeach; ?>
 				</p>
+
+				<h2>Mentioned Sets</h2>
+
+				<input name="filter-sets" type="text" size="30" placeholder="Search sets">
+
+				<p class="no-results" style="display:none;"></p>
+
+				<ul id="browse-sets">
+					<?php foreach(get_post_sets() as $id => $tag): ?>
+				    	<li>
+				    		<a href="<?php echo '/?set='.strtolower(preg_replace("/[^0-9]/", '',$tag)); ?>">
+				    			<?php echo $tag; ?>
+			    			</a>
+			    		</li>
+					<?php endforeach; ?>
+				</ul>
 
 			</section>
 

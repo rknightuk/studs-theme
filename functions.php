@@ -309,3 +309,33 @@ function get_posts_with_set($tag) {
 
 	return array_unique($posts);
 }
+
+function get_post_sets() {
+  $set_ext = Extend::where('key', '=', 'post_sets')->where('type', '=', 'post')->get();
+  $set_id = $set_ext[0]->id;
+
+  $prefix = Config::db('prefix', '');
+
+  $sets = array();
+  $index = 0;
+  foreach(Query::table($prefix.'post_meta')
+	->left_join($prefix.'posts', $prefix.'posts.id', '=', $prefix.'post_meta.post')
+	->where($prefix.'posts.status', '=', 'published')
+	->where('extend', '=', $set_id)
+	->get() as $meta) {
+		$post_meta = json_decode($meta->data);
+
+		$split_sets = explode(', ', $post_meta->text);
+
+		foreach ($split_sets as $set) {
+			if ($set != '')
+				$sets[] = $set;
+		}
+	}
+
+  	$sets = array_unique($sets);
+
+  	natcasesort($sets);
+
+  	return $sets;
+}
