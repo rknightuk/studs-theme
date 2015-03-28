@@ -15,7 +15,7 @@
 				<h2><?php echo total_articles(); ?> posts in <?php echo total_categories(); ?> categories.</h2>
 
 				<ul>
-					<?php foreach(Category::dropdown() as $id => $category): ?>
+					<?php foreach(sorted_categories() as $id => $category): ?>
 					    <li>
 					    	<a href="<?php echo '/category/'.strtolower($category); ?>">
 					    		<?php echo $category; ?>

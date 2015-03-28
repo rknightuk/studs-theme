@@ -16,6 +16,14 @@ function category_count_for_id($id) {
 		->where('status', '=', 'published')->count();
 }
 
+function sorted_categories() {
+	$items = Category::dropdown();
+
+	natcasesort($items);
+
+	return $items;
+}
+
 function article_previous_link() {
 	$page = Registry::get('posts_page');
 	$query = Post::where('created', '<', Registry::prop('article', 'created'))
@@ -60,15 +68,15 @@ function get_page_tags() {
   $tags = array();
   $index = 0;
   foreach(Query::table($prefix.'page_meta')
-    ->left_join('pages', 'pages.id', '=', 'page_meta.page')
-    ->where('pages.status', '=', 'published')
-    ->where('extend', '=', $tag_id)
-    ->get() as $meta) {
-    $page_meta = json_decode($meta->data);
-    foreach(explode(", ", $page_meta->text) as $tag_text) {
-      $tags[$index] = $tag_text;
-      $index += 1;
-    }
+	->left_join('pages', 'pages.id', '=', 'page_meta.page')
+	->where('pages.status', '=', 'published')
+	->where('extend', '=', $tag_id)
+	->get() as $meta) {
+	$page_meta = json_decode($meta->data);
+	foreach(explode(", ", $page_meta->text) as $tag_text) {
+	  $tags[$index] = $tag_text;
+	  $index += 1;
+	}
   }
 
   return array_unique($tags);
@@ -88,11 +96,11 @@ function get_pages_with_tag($tag='') {
 
   $pages = array();
   foreach(Query::table($prefix.'page_meta')
-    ->where('extend', '=', $tag_id)
-    ->where('data', 'LIKE', '%'.$tag.'%')
-    ->get() as $meta) {
+	->where('extend', '=', $tag_id)
+	->where('data', 'LIKE', '%'.$tag.'%')
+	->get() as $meta) {
 
-    $pages[] = $meta->page;
+	$pages[] = $meta->page;
   }
 
   return array_unique($pages);
@@ -112,15 +120,15 @@ function get_post_tags() {
   $tags = array();
   $index = 0;
   foreach(Query::table($prefix.'post_meta')
-    ->left_join('posts', 'posts.id', '=', 'post_meta.post')
-    ->where('posts.status', '=', 'published')
-    ->where('extend', '=', $tag_id)
-    ->get() as $meta) {
-    $post_meta = json_decode($meta->data);
-    foreach(explode(", ", $post_meta->text) as $tag_text) {
-      $tags[$index] = $tag_text;
-      $index += 1;
-    }
+	->left_join('posts', 'posts.id', '=', 'post_meta.post')
+	->where('posts.status', '=', 'published')
+	->where('extend', '=', $tag_id)
+	->get() as $meta) {
+	$post_meta = json_decode($meta->data);
+	foreach(explode(", ", $post_meta->text) as $tag_text) {
+	  $tags[$index] = $tag_text;
+	  $index += 1;
+	}
   }
 
   return array_unique($tags);
@@ -140,11 +148,11 @@ function get_posts_with_tag($tag) {
 
   $posts = array();
   foreach(Query::table($prefix.'post_meta')
-    ->where('extend', '=', $tag_id)
-    ->where('data', 'LIKE', '%'.$tag.'%')
-    ->get() as $meta) {
+	->where('extend', '=', $tag_id)
+	->where('data', 'LIKE', '%'.$tag.'%')
+	->get() as $meta) {
 
-    $posts[] = $meta->post;
+	$posts[] = $meta->post;
   }
 
   return array_unique($posts);
@@ -158,19 +166,19 @@ function get_posts_with_tag($tag) {
  */
 function has_tagged_posts() {
   if(isset($_GET) && array_key_exists('tag',$_GET) && $tag = $_GET['tag']) {
-    if($tagged_posts = get_posts_with_tag($tag)) {
-      $count = Post::
-      where_in('id', $tagged_posts)
-      ->where('status', '=', 'published')
-      ->count();
-    } else {
-      $count = 0;
-    }
+	if($tagged_posts = get_posts_with_tag($tag)) {
+	  $count = Post::
+	  where_in('id', $tagged_posts)
+	  ->where('status', '=', 'published')
+	  ->count();
+	} else {
+	  $count = 0;
+	}
 
-    Registry::set('total_tagged_posts', $count);
+	Registry::set('total_tagged_posts', $count);
   } else {
-    Registry::set('total_tagged_posts', 0);
-    return has_posts();
+	Registry::set('total_tagged_posts', 0);
+	return has_posts();
   }
 
   return Registry::get('total_tagged_posts', 0) > 0;
@@ -184,32 +192,32 @@ function has_tagged_posts() {
  */
 function tagged_posts() {
   if(isset($_GET) && array_key_exists('tag',$_GET) && $tag = $_GET['tag']) {
-    if(! $posts = Registry::get('tagged_posts')) {
-      $tagged_posts = get_posts_with_tag($tag);
-      $posts = Post::
-      where_in('id', $tagged_posts)
-      ->where('status', '=', 'published')
-      ->sort('created', 'desc')
-      ->get();
+	if(! $posts = Registry::get('tagged_posts')) {
+	  $tagged_posts = get_posts_with_tag($tag);
+	  $posts = Post::
+	  where_in('id', $tagged_posts)
+	  ->where('status', '=', 'published')
+	  ->sort('created', 'desc')
+	  ->get();
 
-      Registry::set('tagged_posts', $posts = new Items($posts));
-    }
+	  Registry::set('tagged_posts', $posts = new Items($posts));
+	}
 
-    if($posts instanceof Items) {
-      if($result = $posts->valid()) {
-        // register single post
-        Registry::set('article', $posts->current());
+	if($posts instanceof Items) {
+	  if($result = $posts->valid()) {
+		// register single post
+		Registry::set('article', $posts->current());
 
-        // move to next
-        $posts->next();
-      }
-      // back to the start
-      else $posts->rewind();
+		// move to next
+		$posts->next();
+	  }
+	  // back to the start
+	  else $posts->rewind();
 
-      return $result;
-    }
+	  return $result;
+	}
   } else {
-    return posts();
+	return posts();
   }
 
   return false;
