@@ -24,6 +24,12 @@ function sorted_categories() {
 	return $items;
 }
 
+function footer_year() {
+	  $fromYear = 2015;
+	  $thisYear = (int)date('Y'); 
+	  return '&copy; ' . $fromYear . (($fromYear != $thisYear) ? ' - ' . $thisYear : '');
+}
+
 function article_previous_link() {
 	$page = Registry::get('posts_page');
 	$query = Post::where('created', '<', Registry::prop('article', 'created'))
