@@ -12,17 +12,29 @@
 
 				<?php echo page_content(); ?>
 
-				<h2><?php echo total_articles(); ?> posts in <?php echo total_categories(); ?> categories.</h2>
+				<h2>Categories.</h2>
 
-				<ul>
+				<p>
 					<?php foreach(sorted_categories() as $id => $category): ?>
-					    <li>
-					    	<a href="<?php echo '/category/'.strtolower($category); ?>">
+				    	<code class="article__category article__category--large">
+				    		<a href="<?php echo '/category/'.strtolower($category); ?>">
 					    		<?php echo $category; ?>
-				    		</a> (<?php echo category_count_for_id($id); ?>)
-			    		</li>
+				    		</a>
+			    		</code>
 					<?php endforeach; ?>
-				</ul>
+				</p>
+
+				<h2>Tags</h2>
+
+				<p>
+					<?php foreach(get_post_tags() as $id => $tag): ?>
+				    	<code class="article__tag article__tag--large">
+				    		<a href="<?php echo '/posts/?tag='.strtolower($tag); ?>">
+				    			<?php echo strtoupper($tag); ?>
+			    			</a>
+			    		</code>
+					<?php endforeach; ?>
+				</p>
 
 			</section>
 

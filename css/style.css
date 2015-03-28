@@ -275,6 +275,11 @@ hr {
 	border-radius: 2px;
 }
 
+.article__category--large a, 
+.article__tag--large a {
+	padding: 0 15px;
+}
+
 .article__tag a {
 	background: #c24c59;
 }
