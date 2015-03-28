@@ -38,49 +38,37 @@
 
 			</div>
 
-			<nav class="site-nav">
-
-				<ul class="site-nav__list">
-
-					<?php while(menu_items()): ?>
-					<li class="site-nav__item">
-						<?php
-							$url = menu_url();
-							$title = menu_name();
-
-							if (menu_name() == 'Posts') {
-								$url = '/';
-								$title = 'Home';
-							}
-						?>
-
-						<a href="<?php echo $url; ?>" <?php echo (menu_active() ? 'class="active"' : ''); ?>>
-							<?php echo $title; ?>
-						</a>
-
-						<?php if (menu_name() == 'Categories') : ?>
-							<ul class="site-nav__nested">
-								<?php while(categories()): ?>
-									<li>
-										<a href="<?php echo category_url(); ?>" title="<?php echo category_description(); ?>">
-											<?php echo category_title(); ?>
-										</a>
-									</li>
-								<?php endwhile; ?>
-							</ul>
-						<?php endif; ?>
-					</li>
-					<?php endwhile; ?>
-
-					<li class="site-nav__item">
-						<form class="search__form" action="<?php echo search_url(); ?>" method="post">
-							<input type="text" autocomplete="off" class="search__box" name="term" placeholder="Search" value="<?php echo search_term(); ?>">
-						</form>
-					</li>
-				</ul>
-
-			</nav>
-
 		</header>
+
+		<nav class="site-nav">
+
+			<ul class="site-nav__list">
+
+				<?php while(menu_items()): ?>
+				<li class="site-nav__item">
+					<?php
+						$url = menu_url();
+						$title = menu_name();
+
+						if (menu_name() == 'Posts') {
+							$url = '/';
+							$title = 'Home';
+						}
+					?>
+
+					<a href="<?php echo $url; ?>" <?php echo (menu_active() ? 'class="active"' : ''); ?>>
+						<?php echo $title; ?>
+					</a>
+				</li>
+				<?php endwhile; ?>
+
+				<li class="site-nav__item">
+					<form class="search__form" action="<?php echo search_url(); ?>" method="post">
+						<input type="text" autocomplete="off" class="search__box" name="term" placeholder="Search" value="<?php echo search_term(); ?>">
+					</form>
+				</li>
+			</ul>
+
+		</nav>
 
 		<section class="content">
