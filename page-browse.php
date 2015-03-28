@@ -12,7 +12,7 @@
 
 				<?php echo page_content(); ?>
 
-				<h2>Categories.</h2>
+				<h2>Categories</h2>
 
 				<p>
 					<?php foreach(sorted_categories() as $id => $category): ?>
