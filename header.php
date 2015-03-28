@@ -13,7 +13,7 @@
 		<!--[if lt IE 9]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link rel="shortcut icon" href="img/favicon.ico">
+		<link rel="shortcut icon" href="<?php echo theme_url('img/favicon.ico'); ?>">
 		<link rel="stylesheet" href="<?php echo theme_url('/css/style.css'); ?>">
 		<link rel="stylesheet" href="<?php echo theme_url('/css/magnific.css'); ?>">
 		
