@@ -112,7 +112,7 @@ function get_pages_with_tag($tag='') {
 * @return array
 */
 function get_post_tags() {
-  $tag_ext = Extend::where('key', '=', 'post_tags')->where('data_type', '=', 'post')->get();
+  $tag_ext = Extend::where('key', '=', 'post_tags')->where('type', '=', 'post')->get();
   $tag_id = $tag_ext[0]->id;
 
   $prefix = Config::db('prefix', '');
@@ -120,18 +120,25 @@ function get_post_tags() {
   $tags = array();
   $index = 0;
   foreach(Query::table($prefix.'post_meta')
-	->left_join('posts', 'posts.id', '=', 'post_meta.post')
-	->where('posts.status', '=', 'published')
+	->left_join($prefix.'posts', $prefix.'posts.id', '=', $prefix.'post_meta.post')
+	->where($prefix.'posts.status', '=', 'published')
 	->where('extend', '=', $tag_id)
 	->get() as $meta) {
-	$post_meta = json_decode($meta->data);
-	foreach(explode(", ", $post_meta->text) as $tag_text) {
-	  $tags[$index] = $tag_text;
-	  $index += 1;
-	}
-  }
+		$post_meta = json_decode($meta->data);
 
-  return array_unique($tags);
+		$split_tags = explode(' ', $post_meta->text);
+
+		foreach ($split_tags as $tag) {
+			if ($tag != '')
+				$tags[] = $tag;
+		}
+	}
+
+  	$tags = array_unique($tags);
+
+  	natcasesort($tags);
+
+  	return $tags;
 }
 
 /**
