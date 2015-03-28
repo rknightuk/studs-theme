@@ -43,10 +43,10 @@
 				<p class="no-results" style="display:none;"></p>
 
 				<ul id="browse-sets">
-					<?php foreach(get_post_sets() as $id => $tag): ?>
+					<?php foreach(get_post_sets() as $id => $set): ?>
 				    	<li>
-				    		<a href="<?php echo '/?set='.strtolower(preg_replace("/[^0-9]/", '',$tag)); ?>">
-				    			<?php echo $tag; ?>
+				    		<a href="<?php echo '/?set='.extract_set_number($set); ?>">
+				    			<?php echo $set; ?>
 			    			</a>
 			    		</li>
 					<?php endforeach; ?>

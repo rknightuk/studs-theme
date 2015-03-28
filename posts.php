@@ -28,17 +28,19 @@
                 <p class="article__source"><a href="<?php echo article_custom_field('source'); ?>">Original source</a></p>
             <?php endif; ?>
 
-			<?php if(article_custom_field('sets')) : ?>
-				<section class="article__sets">
+			<?php if(article_custom_field('post_sets')) : ?>
+                <section class="article__sets">
 
-					<h1 class="article__sets__title">Mentioned sets</h1>
+                    <h1 class="article__sets__title">Mentioned sets</h1>
 
-					<ul class="article__sets__list">
-						<?php echo article_custom_field('sets'); ?>
-					</ul>
+                    <ul class="article__sets__list">
+                        <?php foreach(parse_post_sets(article_custom_field('post_sets')) as $set) {
+                            echo '<li class="article__set"><a href="http://brickset.com/sets/'.extract_set_number($set).'">'.$set.'</a></li>';
+                        } ?>
+                    </ul>
 
-				</section>
-			<?php endif; ?>
+                </section>
+            <?php endif; ?>
 
             </article>
 

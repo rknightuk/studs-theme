@@ -30,6 +30,14 @@ function footer_year() {
 	  return '&copy; ' . $fromYear . (($fromYear != $thisYear) ? ' - ' . $thisYear : '');
 }
 
+function extract_set_number($set) {
+	return preg_replace("/[^0-9]/", '',$set);
+}
+
+function parse_post_sets($sets) {
+	return explode(', ', $sets);
+}
+
 function article_previous_link() {
 	$page = Registry::get('posts_page');
 	$query = Post::where('created', '<', Registry::prop('article', 'created'))
