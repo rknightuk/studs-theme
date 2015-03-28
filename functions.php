@@ -229,7 +229,35 @@ function tagged_posts() {
 
 	  return $result;
 	}
-  } else {
+  }
+  elseif(isset($_GET) && array_key_exists('set',$_GET) && $set = $_GET['set'])
+  {
+  	if(! $posts = Registry::get('setted_posts')) {
+	  $setted_posts = get_posts_with_set($set);
+	  $posts = Post::
+	  where_in('id', $setted_posts)
+	  ->where('status', '=', 'published')
+	  ->sort('created', 'desc')
+	  ->get();
+
+	  Registry::set('setted_posts', $posts = new Items($posts));
+	}
+
+	if($posts instanceof Items) {
+	  if($result = $posts->valid()) {
+		// register single post
+		Registry::set('article', $posts->current());
+
+		// move to next
+		$posts->next();
+	  }
+	  // back to the start
+	  else $posts->rewind();
+
+	  return $result;
+	}
+  }
+  else {
 	return posts();
   }
 
@@ -246,4 +274,26 @@ function format_post_tags($tags) {
 	}
 
 	return $formatted;
+}
+
+/**
+ * Get sets
+ */
+
+function get_posts_with_set($tag) {
+	$tag_ext = Extend::where('key', '=', 'post_sets')->get();
+	$tag_id = $tag_ext[0]->id;
+
+	$prefix = Config::db('prefix', '');
+
+	$posts = array();
+	foreach(Query::table($prefix.'post_meta')
+	->where('extend', '=', $tag_id)
+	->where('data', 'LIKE', '%'.$tag.'%')
+	->get() as $meta) {
+
+	$posts[] = $meta->post;
+	}
+
+	return array_unique($posts);
 }
