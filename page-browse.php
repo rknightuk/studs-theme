@@ -38,7 +38,7 @@
 
 				<h2>Mentioned Sets</h2>
 
-				<input name="filter-sets" type="text" size="30" placeholder="Search sets">
+				<input name="filter-sets" type="text" size="30" placeholder="Filter">
 
 				<p class="no-results" style="display:none;"></p>
 
