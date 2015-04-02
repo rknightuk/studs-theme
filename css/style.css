@@ -121,8 +121,12 @@ hr {
 	}
 }
 
-@media screen and (max-width: 320px) {
-	.header-info__logo {
+@media screen and (max-width: 500px) {
+	.header-info__centerer {
+		margin-left: 0;
+	}
+
+	.site-nav__item:last-child {
 		display: none;
 	}
 }
