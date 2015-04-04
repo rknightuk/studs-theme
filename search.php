@@ -14,10 +14,6 @@
      			| <code class="article__category"><a href="<?php echo article_category_url(); ?>"><?php echo article_category(); ?></a></code></span>
  			</h1>
 
-     		<h2 class="article__meta">
-     			
-     		</h2>
-
      	</header>
 
     </article>
