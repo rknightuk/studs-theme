@@ -378,7 +378,8 @@ hr {
 	display: inline-block;
 }
 
-input[name=filter-sets] {
+input[name=filter-sets],
+.browse__search {
 	width: auto;
 	padding: 10px;
 	font-size: 15px;

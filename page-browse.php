@@ -12,6 +12,12 @@
 
 				<?php echo page_content(); ?>
 
+				<h2>Search</h2>
+
+				<form action="<?php echo search_url(); ?>" method="post">
+					<input type="text" autocomplete="off" class="browse__search" name="term" placeholder="Search" value="<?php echo search_term(); ?>" size="30">
+				</form>
+
 				<h2>Categories</h2>
 
 				<p>
