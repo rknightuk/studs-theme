@@ -31,7 +31,7 @@ function footer_year() {
 }
 
 function extract_set_number($set) {
-	return preg_replace("/[^0-9]/", '',$set);
+	return explode(': ', $set)[0];
 }
 
 function parse_post_sets($sets) {
