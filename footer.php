@@ -4,7 +4,7 @@
 			
 			<section class="footer-site__wrapper">
 
-				<p><?php echo footer_year(); ?> Studs.me | <a href="/feeds/rss">Subscribe</a> | Twitter: <a href="http://twitter.com/StudsHQ">@StudsHQ</a></p>
+				<p><?php echo footer_year(); ?> Studs.me | <a href="/feeds/rss">Subscribe</a> | Twitter: <a href="http://twitter.com/StudsHQ">@StudsHQ</a> | <a href="https://www.flickr.com/photos/rmlewisuk">Flickr</a></p>
 
 			</section>
 
