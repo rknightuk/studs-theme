@@ -24,6 +24,10 @@
 
          	</section>
 
+            <?php if(article_custom_field('flickr_album')) : ?>
+                <p class="article__source"><a href="<?php echo article_custom_field('flickr_album'); ?>">View album on Flickr</a></p>
+            <?php endif; ?>
+
          	<?php if(article_custom_field('source')) : ?>
                 <p class="article__source"><a href="<?php echo article_custom_field('source'); ?>">Original source</a></p>
             <?php endif; ?>
